@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#142b49">
+<title>My Co-Pilot | For Bubba 🤎</title>
+
+<style>
+:root {
+  --navy: #142b49;
+  --blue: #9ccbe8;
+  --sky: #e4f2fa;
+  --cream: #fff8ed;
+  --brown: #755747;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--navy);
+  background: var(--cream);
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.hero {
+  padding: 48px 18px 36px;
+  background: linear-gradient(160deg, #dceefa, #fff8ed 75%);
+  position: relative;
+  overflow: hidden;
+}
+
+.eyebrow {
+  font: 11px Arial, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #547b9b;
+}
+
+.plane {
+  font-size: 40px;
+  margin: 25px auto 12px;
+  animation: fly 3s ease-in-out infinite;
+}
+
+@keyframes fly {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+h1 {
+  font-size: clamp(36px, 8vw, 60px);
+  margin: 10px 0;
+  color: var(--navy);
+}
+
+.hero p {
+  line-height: 1.9;
+  max-width: 440px;
+  margin: 14px auto;
+}
+
+.primary, .secondary {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 21px;
+  margin: 6px 3px;
+  font-size: 14px;
+}
+
+.primary {
+  color: white;
+  background: var(--navy);
+}
+
+.secondary {
+  color: var(--navy);
+  background: var(--sky);
+  border: 1px solid #c4dfef;
+}
+
+main {
+  width: min(92%, 560px);
+  margin: 25px auto 45px;
+}
+
+.card {
+  background: rgba(255,255,255,.8);
+  border: 1px solid #d9e8f0;
+  border-radius: 23px;
+  padding: 25px 20px;
+  margin: 20px 0;
+  box-shadow: 0 8px 25px rgba(20,43,73,.06);
+}
+
+.card h2 {
+  font-size: 25px;
+  margin: 12px 0;
+}
+
+.card p {
+  line-height: 1.9;
+}
+
+.small-label {
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2.5px;
+  color: #6687a0;
+  text-transform: uppercase;
+}
+
+.cover {
+  background: linear-gradient(145deg, #142b49, #537e9f 65%, #b4d9ed);
+  color: white;
+  border-radius: 18px;
+  padding: 38px 15px;
+  margin: 18px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before, .cover::after {
+  content: "✦";
+  position: absolute;
+  color: #ffffff80;
+  font-size: 25px;
+}
+
+.cover::before {
+  top: 20px;
+  left: 25px;
+}
+
+.cover::after {
+  right: 25px;
+  bottom: 20px;
+}
+
+.cover .names {
+  font-size: clamp(27px, 7vw, 39px);
+  margin: 12px 0;
+}
+
+.cover .sub {
+  font: 11px Arial, sans-serif;
+  letter-spacing: 3px;
+}
+
+.cover .heart {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.cover-photo {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 12px auto;
+}
+
+.note {
+  background: #f0f7fb;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: left;
+  line-height: 2;
+  white-space: pre-line;
+  display: none;
+  margin-top: 18px;
+  animation: reveal .3s ease;
+}
+
+.note.show {
+  display: block;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#player {
+  width: 100%;
+  min-height: 200px;
+  border-radius: 13px;
+  overflow: hidden;
+  margin: 15px auto;
+}
+
+#player iframe {
+  max-width: 100%;
+  border-radius: 13px;
+}
+
+.status {
+  font: 12px Arial, sans-serif;
+  color: #5d7e97;
+  line-height: 1.8;
+}
+
+.coffee-note {
+  min-height: 60px;
+}
+
+.counter {
+  font-size: 42px;
+  margin: 15px;
+  color: #547eaa;
+}
+
+footer {
+  background: var(--navy);
+  color: #e8f3fa;
+  padding: 28px 15px;
+  font: 11px Arial, sans-serif;
+  line-height: 2.2;
+  letter-spacing: 1px;
+}
+
+a {
+  color: inherit;
+}
+
+@media (max-width: 400px) {
+  .card { padding: 22px 15px; }
+  .hero { padding-top: 35px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="eyebrow">✈ Flight log no. 001 · Private</div>
+
+  <div class="plane">✈️</div>
+
+  <h1>My Co-Pilot</h1>
+
+  <p>
+    To my favorite girl, my bubba. 🤎<br>
+    Out of all the places in this world,<br>
+    you're the destination I want to keep choosing.
+  </p>
+
+  <button class="primary" onclick="scrollToLetter()">
+    Your letter awaits ↓
+  </button>
+</header>
+
+<main>
+
+  <!-- MIKHAIAH COVER -->
+  <section class="card">
+    <div class="small-label">Our little corner of the sky</div>
+
+    <div class="cover">
+      <div class="sub">A SPECIAL FLIGHT FOR</div>
+      <div class="names">Mikha ♡ Aiah</div>
+      <div class="heart">🩵</div>
+      <div class="sub">MIKHAIAH · FOREVER IN OUR SKY</div>
+      <p>Two stars, one little universe. ✨</p>
+    </div>
+
+    <!--
+      OPTIONAL PHOTO:
+      Upload your chosen Mikha and Aiah photo to your
+      GitHub repository and name it mikhaiah.jpg.
+      Then uncomment the next two lines.
+    -->
+
+    <!--
+    <img class="cover-photo"
+         src="mikhaiah.jpg"
+         alt="Mikha and Aiah from BINI">
+    -->
+
+    <p>
+      A little Mikhaiah corner, made with love
+      for the girl who means so much to me.
+    </p>
+
+    <a href="https://weverse.io/bini/media/1-174989523"
+       target="_blank" rel="noopener noreferrer">
+      <button class="secondary">
+        See Mikha and Aiah's official content ↗
+      </button>
+    </a>
+  </section>
+
+  <!-- LOVE LETTER -->
+  <section class="card" id="love-letter">
+    <div class="small-label">A message from your captain</div>
+    <h2>Dear, my bubba. 💌</h2>
+
+    <p>
+      A little letter for the days you need
+      some extra love.
+    </p>
+
+    <button class="primary"
+            onclick="toggleNote('letter', this)"
+            aria-expanded="false">
+      Open your letter 🤎
+    </button>
+
+    <div class="note" id="letter">
+Hi, my malditang dinorawr. 🤎
+
+I love you! Yes! HAHAHA that is the very first thing
+na maririnig mo from me. Wala eh. I am so deeply in 
+love with you, baby. You're the prettiest, cutest, 
+adorable in my eyes:)
+
+I'll always choose to listen, I'll always choose 
+you through thick and thin, bubba.
+
+I know I won't always have the perfect words,
+and I can't promise that every day will be easy.
+But I want to keep learning how to love you
+in ways that make you feel safe, heard, and valued.
+
+You are loved for you who you are baby, remember that.
+and if they aren't proud of you, ibahin mo ako.
+Captain is always proud of my little dino's achievements
+whether it is small or big.
+
+I want to sit with you through the quiet ones, loud
+or even chaotic ones. 
+
+And if life ever feels like a turbulent flight,
+take a breath, my love. We don't have to figure
+everything out all at once.
+
+Let me, let me show you what you deserve.
+Thank you for being my bubba.
+Thank you for letting me love you.
+
+Me wab you always. Mwa mwaa. 🤎✈️
+
+With all my love,
+Your Captain. ♡
+    </div>
+  </section>
+
+  <!-- MUSIC PLAYER -->
+  <section class="card">
+    <div class="small-label">In-flight entertainment</div>
+    <h2>Our little song 🎧</h2>
+
+    <p>
+      A song for my favorite everything.<br>
+      <strong>Mine</strong> · Our special moment
+    </p>
+
+    <div id="player"></div>
+
+    <button class="primary" onclick="playSong()">
+      ▶ Play
+    </button>
+
+    <button class="secondary" onclick="pauseSong()">
+      ⏸ Pause
+    </button>
+
+    <p class="status" id="song-status" aria-live="polite">
+      Ready for takeoff, bubba. ✈️<br>
+      Selected section: 3:05–3:36
+    </p>
+
+    <p class="status">
+      If playback doesn't start, try using the controls
+      in the YouTube player above.
+    </p>
+  </section>
+
+  <!-- COFFEE NOTES -->
+  <section class="card">
+    <div class="small-label">Complimentary coffee service</div>
+    <h2>A little something for you ☕</h2>
+
+    <p>
+      Choose a little note whenever you need
+      a reminder that you're loved.
+    </p>
+
+    <button class="secondary" onclick="coffeeNote(0)">
+      Spanish latte 🤎
+    </button>
+
+    <button class="secondary" onclick="coffeeNote(1)">
+      Warm huggie 🧸
+    </button>
+
+    <button class="secondary" onclick="coffeeNote(2)">
+      Love reminder 💌
+    </button>
+
+    <div id="coffee-note" class="note coffee-note"
+         aria-live="polite"></div>
+  </section>
+
+  <!-- LOVE COUNTER -->
+  <section class="card">
+    <div class="small-label">Our flight record</div>
+    <h2>Sending you love ♡</h2>
+
+    <p>
+      Every tap is a tiny reminder
+      that someone is cheering for you.
+    </p>
+
+    <div class="counter" id="love-count">♡ 0</div>
+
+    <button class="primary" onclick="sendLove()">
+      Send bubba some love ♡
+    </button>
+
+    <p id="love-message" class="status" aria-live="polite"></p>
+  </section>
+
+  <!-- FINAL ANNOUNCEMENT -->
+  <section class="card">
+    <div class="small-label">Before we land</div>
+    <h2>One last announcement ✈️</h2>
+
+    <p>
+      Please fasten your seatbelts, and keep your heart
+      close and prepare for a journey filled with love
+      gentleness, patience, and endless affection.
+    </p>
+
+    <button class="primary"
+            onclick="toggleNote('announcement', this)"
+            aria-expanded="false">
+      Captain speaking 💙
+    </button>
+
+    <div class="note" id="announcement">
+Ladies and gentlemen, this is your captain speaking. ✈️
+
+Thank you for being part of this little journey.
+
+To my co - pilot: I hope life gives you reasons
+to smile, kahit na minsan mahirap gawin, kahit na minsan
+pasuko kana.
+
+You deserve patience, understanding, care, and love
+
+I may not know every destination our future holds,
+but I'll keep choosing you. I've realized that my 
+favorite destination wasn't a place, but you.
+
+This is your Captain speaking. We've reached the end 
+of the flight, but not the end of our journey.
+
+And to my co - pilot, reminding you once more:
+Thankyou for being my sweetest destination.      
+You are loved, bubba. Always remember that. 🤎
+This is your Captain, signing off with all my
+love and because I'll go home to you, sksk. Mwa!!
+
+End of announcement.
+Mwa mwaa. ♡
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  MADE WITH LOVE, JUST FOR YOU 🤎<br>
+  MY CO-PILOT · FLIGHT DESTINATION: US ✈️<br>
+  <span style="letter-spacing:0">
+    No destination is more special than the people we choose.
+  </span>
+</footer>
+
+<script>
+/* LOVE LETTER BUTTONS */
+
+function toggleNote(id, button) {
+  const note = document.getElementById(id);
+  const opening = !note.classList.contains("show");
+
+  note.classList.toggle("show", opening);
+  button.setAttribute("aria-expanded", String(opening));
+
+  if (id === "letter") {
+    button.textContent = opening
+      ? "Close your letter ♡"
+      : "Open your letter 🤎";
+  }
+
+  if (id === "announcement") {
+    button.textContent = opening
+      ? "Close announcement ♡"
+      : "Captain speaking 💙";
+  }
+}
+
+function scrollToLetter() {
+  document.getElementById("love-letter").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+/* COFFEE NOTES */
+
+const coffeeNotes = [
+  "Spanish latte 🤎\n\nA sweet little reminder that you deserve a soft day, my love. I hope you heal from the things you don't wanna talk about, and slowly learn how to say no to people w/out feeling guilty",
+
+  "Sending you the warmest virtual huggie, bubba bear. 🧸\n\nImagine the world slowing down for a moment, just so you can rest. Enjoy this flight with me.",
+
+  "In case my Dino forgets: you matter, your feelings matter, and you are loved. 💌\n\nYou never have to apologize for something you didn't do. Be gentle with yourself, my love."
+];
+
+function coffeeNote(index) {
+  const box = document.getElementById("coffee-note");
+  box.textContent = coffeeNotes[index];
+  box.classList.add("show");
+}
+
+/* LOVE COUNTER */
+
+let loveCount = 0;
+
+const loveMessages = [
+  "One little hug for you. 🤎",
+  "Another reason to smile, bubba. ☁️",
+  "The kapit bahay na pogita is cheering for you! ✈️",
+  "Sending you extra love and support today. 💌",
+  "Mwa mwaa, to my prettiest maldita. 🤍",
+];
+
+function sendLove() {
+  loveCount++;
+
+  document.getElementById("love-count").textContent =
+    "♡ " + loveCount;
+
+  document.getElementById("love-message").textContent =
+    loveMessages[(loveCount - 1) % loveMessages.length];
+}
+
+/* YOUTUBE MUSIC PLAYER
+   Start: 3:05 = 185 seconds
+   End:   3:36 = 216 seconds
+*/
+
+const SONG_ID = "oxNLRqMJMZk";
+const SONG_START = 185;
+const SONG_END = 216;
+
+let songPlayer = null;
+let songCheckInterval = null;
+let playerReady = false;
+
+function updateSongStatus(message) {
+  document.getElementById("song-status").textContent = message;
+}
+
+function onYouTubeIframeAPIReady() {
+  songPlayer = new YT.Player("player", {
+    width: "100%",
+    height: "250",
+    videoId: SONG_ID,
+    playerVars: {
+      start: SONG_START,
+      end: SONG_END,
+      controls: 1,
+      playsinline: 1,
+      rel: 0
+    },
+    events: {
+      onReady: function() {
+        playerReady = true;
+        updateSongStatus(
+          "Ready for takeoff, bubba. ✈️ Selected section: 3:05–3:36."
+        );
+      },
+
+      onStateChange: function(event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+          clearInterval(songCheckInterval);
+
+          songCheckInterval = setInterval(function() {
+            if (!songPlayer || !playerReady) return;
+
+            const currentTime = songPlayer.getCurrentTime();
+
+            if (currentTime >= SONG_END) {
+              songPlayer.pauseVideo();
+              clearInterval(songCheckInterval);
+
+              updateSongStatus(
+                "Our little song moment or kalandian is over HAHAHAHA. Replay it anytime, bubba. 🤎"
+              );
+            }
+          }, 250);
+
+          updateSongStatus("Now playing our song. 🤎✈️");
+        } else {
+          clearInterval(songCheckInterval);
+
+          if (event.data === YT.PlayerState.PAUSED) {
+            updateSongStatus("Paused, my love. ☁️");
+          }
+
+          if (event.data === YT.PlayerState.ENDED) {
+            updateSongStatus("End of our song. 🤎");
+          }
+        }
+      },
+
+      onError: function() {
+        updateSongStatus(
+          "The song couldn't be embedded. Please open it directly on YouTube."
+        );
+      }
+    }
+  });
+}
+
+function playSong() {
+  if (!playerReady || !songPlayer) {
+    updateSongStatus(
+      "The music player is still loading. Please wait a moment."
+    );
+    return;
+  }
+
+  const currentTime = songPlayer.getCurrentTime();
+
+  if (
+    currentTime < SONG_START ||
+    currentTime >= SONG_END ||
+    songPlayer.getPlayerState() === YT.PlayerState.ENDED
+  ) {
+    songPlayer.seekTo(SONG_START, true);
+  }
+
+  songPlayer.playVideo();
+  updateSongStatus("Now playing our song. 🤎✈️");
+}
+
+function pauseSong() {
+  if (!playerReady || !songPlayer) {
+    updateSongStatus("The music player is still loading.");
+    return;
+  }
+
+  songPlayer.pauseVideo();
+  updateSongStatus("Paused, my love. ☁️");
+}
+</script>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+</body>
+</html>
